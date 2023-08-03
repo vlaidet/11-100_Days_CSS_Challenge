@@ -1,0 +1,160 @@
+// delete the following line if no text is used
+// edit the line if you wanna use other fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+// * VARIABLES
+$bg: radial-gradient(ellipse at center, #f6e8d7 0%, #dabe9b 100%);
+$color: #333;
+$height: 400px;
+$width: 400px;
+
+$floor__bg: #232323;
+$floor__height: 156px;
+
+$shoe__height: 128px;
+$shoe__width: 152px;
+
+// use only the available space inside the 400x400 frame
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: $height;
+  width: $width;
+  margin-top: calc(#{$height} / 2 * -1);
+  margin-left: calc(#{$width} / 2 * -1);
+  border-radius: 7px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: $bg;
+  color: $color;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.floor {
+  position: absolute;
+  bottom: 0;
+  height: calc(#{$height} / 2.56);
+  width: 100%;
+  background-color: $floor__bg;
+}
+
+.fade__in__container {
+  height: 100%;
+  width: 100%;
+  animation: fade_in 0.8s ease-out 1s;
+
+  .shoes {
+    position: relative;
+    height: calc(#{$height} - #{$floor__height});
+    width: 100%;
+  }
+
+  .shoe__container {
+    position: absolute;
+    left: 147px;
+    height: calc(#{$height} - #{$floor__height});
+    width: 151px;
+    transform-origin: 50% 0;
+  }
+
+  .shoe__container.left {
+    animation: shoe_swing 2s ease-in-out infinite;
+  }
+
+  .shoe__container.right {
+    animation: shoe_swing 2s ease-in-out 1s infinite;
+  }
+
+  .shoe {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: $shoe__height;
+    width: $shoe__width;
+    background: url("https://100dayscss.com/codepen/doc-martens.svg") center center no-repeat;
+    animation: shoe_walk 2s ease-in-out 1s infinite;
+  }
+
+  .left .shoe {
+    animation: shoe_walk 2s ease-in-out infinite;
+  }
+
+  .right .shoe {
+    animation: shoe_walk 2s ease-in-out 1s infinite;
+  }
+
+}
+
+
+// * ANIMATIONS
+@-webkit-keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shoe_swing {
+	0%, 100% {
+		transform: rotateZ(-20deg);
+	}
+	50% {
+		transform: rotateZ(40deg);
+	}
+}
+
+@keyframes shoe_swing {
+	0%, 100% {
+		transform: rotateZ(-20deg);
+	}
+	50% {
+		transform: rotateZ(40deg);
+	}
+}
+
+@-webkit-keyframes shoe_walk {
+  0%, 100% {
+    transform: rotate(-10deg) translateY(-5px) translateX(10px);
+  }
+  25% {
+    transform: rotate(0deg) translateY(0px) translateX(0);
+  }
+  50% {
+    transform: rotate(10deg) translateY(-10px) translateX(10px);
+  }
+  75% {
+    transform: rotate(0deg) translateY(-30px) translateX(0);
+  }
+}
+
+@keyframes shoe_walk {
+  0%, 100% {
+    transform: rotate(-10deg) translateY(-5px) translateX(10px);
+  }
+  25% {
+    transform: rotate(0deg) translateY(0px) translateX(0);
+  }
+  50% {
+    transform: rotate(10deg) translateY(-10px) translateX(10px);
+  }
+  75% {
+    transform: rotate(0deg) translateY(-30px) translateX(0);
+  }
+}
